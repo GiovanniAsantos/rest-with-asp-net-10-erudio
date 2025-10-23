@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "wL1lVQY2PDU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Meu Computador\\Desktop\\Projetos\\curso-dotnet\\rest-with-asp-net-10-erudio\\RestWithASPNET10Erudio_ScaffoldViaTerminal\\RestWithASPNET10Erudio\\RestWithASPNET10Erudio\\RestWithASPNET10Erudio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Meu Computador\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.0-rc.2.25502.107\\microsoft.aspnetcore.openapi.10.0.0-rc.2.25502.107.nupkg.sha512",
+    "C:\\Users\\Meu Computador\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
