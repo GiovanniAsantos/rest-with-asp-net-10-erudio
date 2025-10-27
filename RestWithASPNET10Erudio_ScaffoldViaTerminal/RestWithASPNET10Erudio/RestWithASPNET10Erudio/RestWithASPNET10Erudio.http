@@ -1,14 +1,6 @@
 @RestWithASPNET10Erudio_HostAddress = http://localhost:5171
-@RestWithASPNET10Erudio_HostAddress_HTTPS = https://localhost:7039
 
-# Test the Greeting controller (HTTP)
-GET {{RestWithASPNET10Erudio_HostAddress}}/Greeting
-Accept: application/json
-
-###
-
-# Test the Greeting controller (HTTPS)
-GET {{RestWithASPNET10Erudio_HostAddress_HTTPS}}/Greeting
+GET {{RestWithASPNET10Erudio_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
