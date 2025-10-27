@@ -1,22 +1,21 @@
 using RestWithASPNET10Erudio.Model;
+using RestWithASPNET10Erudio.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddOpenApi();
+//Add services to the container
 
 builder.Services.AddControllers();
 
+builder.Services.AddSingleton<MathService>();
+
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+// Configure the HTTP request pipeline.
 
 app.UseHttpsRedirection();
 
-// Expose root endpoint returning the same Greeting so http://localhost:5171/ responds
-app.MapGet("/", () => new Greeting(1, "Hello World from ASP.NET Core 10!"));
+app.UseAuthorization();
 
 app.MapControllers();
 

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using RestWithASPNET10Erudio.Services;
+using RestWithASPNET10Erudio.Utils;
 
 namespace RestWithASPNET10Erudio.Controllers;
 
@@ -6,12 +8,19 @@ namespace RestWithASPNET10Erudio.Controllers;
 [Route("[controller]")]
 public class MathController : ControllerBase
 {
+    private readonly MathService _mathService;
+    public MathController(MathService mathService)
+    {
+        _mathService = mathService;
+    }
+    
     [HttpGet ("sum/{firstNumber}/{secondNumber}")]
     public IActionResult GetSum(string firstNumber, string secondNumber)
     {
-        if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+        if(NumberHelper.IsNumeric(firstNumber) && NumberHelper.IsNumeric(secondNumber))
         {
-            var sum = ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber);
+            var sum = _mathService.Sum(NumberHelper.ConvertToDecimal(firstNumber),
+                NumberHelper.ConvertToDecimal(secondNumber));
             return Ok(sum);
         }
         
@@ -21,9 +30,9 @@ public class MathController : ControllerBase
     [HttpGet ("sub/{firstNumber}/{secondNumber}")]
     public IActionResult GetSub(string firstNumber, string secondNumber)
     {
-        if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+        if(NumberHelper.IsNumeric(firstNumber) && NumberHelper.IsNumeric(secondNumber))
         {
-            var sub = ConvertToDecimal(firstNumber) - ConvertToDecimal(secondNumber);
+            var sub = _mathService.Sub(NumberHelper.ConvertToDecimal(firstNumber), NumberHelper.ConvertToDecimal(secondNumber));
             return Ok(sub);
         }
         
@@ -33,9 +42,9 @@ public class MathController : ControllerBase
     [HttpGet ("div/{firstNumber}/{secondNumber}")]
     public IActionResult GetDiv(string firstNumber, string secondNumber)
     {
-        if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+        if(NumberHelper.IsNumeric(firstNumber) && NumberHelper.IsNumeric(secondNumber))
         {
-            var div = ConvertToDecimal(firstNumber) / ConvertToDecimal(secondNumber);
+            var div = _mathService.Div(NumberHelper.ConvertToDecimal(firstNumber), NumberHelper.ConvertToDecimal(secondNumber));
             return Ok(div);
         }
         
@@ -45,9 +54,9 @@ public class MathController : ControllerBase
     [HttpGet ("mult/{firstNumber}/{secondNumber}")]
     public IActionResult GetMult(string firstNumber, string secondNumber)
     {
-        if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+        if(NumberHelper.IsNumeric(firstNumber) && NumberHelper.IsNumeric(secondNumber))
         {
-            var mult = ConvertToDecimal(firstNumber) * ConvertToDecimal(secondNumber);
+            var mult = _mathService.Mult(NumberHelper.ConvertToDecimal(firstNumber), NumberHelper.ConvertToDecimal(secondNumber));
             return Ok(mult);
         }
         
@@ -57,9 +66,9 @@ public class MathController : ControllerBase
     [HttpGet ("media/{firstNumber}/{secondNumber}")]
     public IActionResult GetMedia(string firstNumber, string secondNumber)
     {
-        if(IsNumeric(firstNumber) && IsNumeric(secondNumber))
+        if(NumberHelper.IsNumeric(firstNumber) && NumberHelper.IsNumeric(secondNumber))
         {
-            var media = (ConvertToDecimal(firstNumber) + ConvertToDecimal(secondNumber)) / 2;
+            var media = _mathService.Media(NumberHelper.ConvertToDecimal(firstNumber), NumberHelper.ConvertToDecimal(secondNumber));
             return Ok(media);
         }
         
@@ -69,39 +78,11 @@ public class MathController : ControllerBase
     [HttpGet ("raiz/{firstNumber}")]
     public IActionResult GetRaiz(string firstNumber)
     {
-        if(IsNumeric(firstNumber))
+        if(NumberHelper.IsNumeric(firstNumber))
         {
-            var raiz = Math.Sqrt((double)ConvertToDecimal(firstNumber));
+            var raiz =_mathService.Raiz(NumberHelper.ConvertToDecimal(firstNumber));
             return Ok(raiz);
         }
         return BadRequest("Invalid Input");
-    }
-
-    private decimal ConvertToDecimal(string strNumber)
-    {
-        decimal decimalValue;
-        if (
-            decimal.TryParse(
-                strNumber, 
-                System.Globalization.NumberStyles.Any,
-                System.Globalization.NumberFormatInfo.InvariantInfo,
-                out decimalValue))
-        {
-            return decimalValue;
-        }
-
-        return 0;
-    }
-
-    private bool IsNumeric(string strNumber)
-    {
-        decimal decimalValue = 0;
-        bool isNumber = decimal.TryParse(
-            strNumber,
-            System.Globalization.NumberStyles.Any,
-            System.Globalization.NumberFormatInfo.InvariantInfo,
-            out decimalValue
-        );
-        return isNumber;
     }
 }
