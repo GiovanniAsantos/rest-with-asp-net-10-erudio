@@ -15,7 +15,7 @@ public class MathController : ControllerBase
             return Ok(sum);
         }
         
-        return BadRequest("Invalid Input");
+        return BadRequest("Invalid Input"); 
     }
     
     [HttpGet ("sub/{firstNumber}/{secondNumber}")]
