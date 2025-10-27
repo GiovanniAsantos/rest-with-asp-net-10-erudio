@@ -1,5 +1,6 @@
 using RestWithASPNET10Erudio.Model;
 using RestWithASPNET10Erudio.Services;
+using RestWithASPNET10Erudio.Services.Impl;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddSingleton<MathService>();
+
+builder.Services.AddScoped<IPersonService, PersonImpl>();
 
 var app = builder.Build();
 

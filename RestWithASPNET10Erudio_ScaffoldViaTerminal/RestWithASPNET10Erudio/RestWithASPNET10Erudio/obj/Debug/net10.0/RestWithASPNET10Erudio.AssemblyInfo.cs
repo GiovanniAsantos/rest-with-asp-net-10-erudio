@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestWithASPNET10Erudio")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+db05806be7e21a410c6e32bea20665a567d2db92")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4559f0727ba4e5d75b184d2b749a1544374723ae")]
 [assembly: System.Reflection.AssemblyProductAttribute("RestWithASPNET10Erudio")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestWithASPNET10Erudio")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
