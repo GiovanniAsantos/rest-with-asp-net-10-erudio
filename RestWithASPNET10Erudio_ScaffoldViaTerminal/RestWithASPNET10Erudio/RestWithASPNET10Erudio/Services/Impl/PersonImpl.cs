@@ -36,7 +36,6 @@ public class PersonImpl : IPersonService
     public void Delete(long id)
     {
         //Simulate delete logic
-        throw new NotImplementedException();
     }
     
     private Person MockPerson(int i)
